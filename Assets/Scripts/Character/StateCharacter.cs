@@ -10,6 +10,7 @@ public class StateCharacter : CharacterComponent
     {
         if (other.GetComponent<Barrel>())
         {
+            other.GetComponent<Barrel>().Killer = true;
             characterManager.NotifyState(CharacterManager.States.Die);
         }
     }

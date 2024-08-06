@@ -13,7 +13,7 @@ public static class Equations
     {
         double b = 2.7f;
         double e = 0.05f;
-        double c = 10 + (quantityBarrels / 20) * 0.5f;
+        double c = 3 + (quantityBarrels / 20) * 0.5f;
 
         return System.Math.Pow(b, e * Mathf.Max(Random.Range(quantityBarrels - 5, quantityBarrels + 5), 1)) * c;
     }
@@ -65,12 +65,12 @@ public static class Equations
 
     public static void UpBarrels()
     {
-        Debug.Log("Barrels" + quantityBarrels);
-        Debug.Log("Weapon Damage " + WeaponDamage());
-        Debug.Log("Time regenerate Barrels " + TimeRegenerateBarrels());
-        Debug.Log("SpeedBarrels " + SpeedBarrels());
-        Debug.Log("CharacterSpeed " + CharacterSpeed());
-        Debug.Log("RateOfFire " + RateOfFire());
+        //Debug.Log("Barrels" + quantityBarrels);
+        //Debug.Log("Weapon Damage " + WeaponDamage());
+        //Debug.Log("Time regenerate Barrels " + TimeRegenerateBarrels());
+        //Debug.Log("SpeedBarrels " + SpeedBarrels());
+        //Debug.Log("CharacterSpeed " + CharacterSpeed());
+        //Debug.Log("RateOfFire " + RateOfFire());
 
         quantityBarrels++;
     }

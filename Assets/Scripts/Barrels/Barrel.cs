@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Barrel : MonoBehaviour
+public class Barrel : MonoBehaviour, IBarrel
 {
     Transform initialPosition;
     Transform target;
@@ -11,6 +11,9 @@ public class Barrel : MonoBehaviour
     public TextMeshProUGUI text;
     public MeshRenderer rewardMeshRender;
     public RewardMaterials[] rewardMaterials;
+    [SerializeField] bool killer;
+
+    public bool Killer { get => killer; set { killer = value; } }
 
     public enum Update
     {
@@ -54,7 +57,7 @@ public class Barrel : MonoBehaviour
 
         transform.position = target.position;
 
-        gameObject.SetActive(false);
+        Die();
     }
 
     public void ReduceLife(double damage)
@@ -80,7 +83,7 @@ public class Barrel : MonoBehaviour
                     break;
             }
             Equations.UpBarrels();
-            gameObject.SetActive(false);
+            Die();
         }
     }
 
@@ -90,6 +93,19 @@ public class Barrel : MonoBehaviour
         {
             rewardMaterials[i].name = System.Enum.GetNames(typeof(Update))[i];
         }
+    }
+
+    public void FinishGame()
+    {
+        Debug.Log("me desaparezco");
+        if (!killer)
+            Die();
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
+        BarrelGeneratorManager.instace.UnSubcribe(this);
     }
 
     [System.Serializable]
