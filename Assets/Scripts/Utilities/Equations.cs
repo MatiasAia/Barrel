@@ -42,7 +42,7 @@ public static class Equations
         float e = -0.01f;
         float c = 6; // 6
 
-        return Mathf.Pow(b, e * quantityBarrels) * c + 1;
+        return Mathf.Pow(b, e * quantityBarrels) * c + 6;
     }
 
     public static float CharacterSpeed()

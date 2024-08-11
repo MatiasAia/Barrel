@@ -29,6 +29,7 @@ public class WorldControl : MonoBehaviour
         characterManager.RestartComponents();
     }
 
+    [ContextMenu("StartGame")]
     public void StartGame()
     {
         cameraManager.ChangePos(CameraManager.Positions.Pos2);
