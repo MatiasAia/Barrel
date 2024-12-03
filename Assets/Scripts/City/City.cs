@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityManager : MonoBehaviour
+public class City : MonoBehaviour
 {
-    public int wallLife;
-    // Start is called before the first frame update
-    void Start()
+    int wallLife;
+
+    private void Awake()
     {
-        
+        ProgressLevel.control.CityReference = this;
+    }
+
+    public void Set()
+    {
+        wallLife = ProgressLevel.control.GetWallHealt();
     }
 
     public void ReduceLife(Barrel barrel)

@@ -11,6 +11,7 @@ public class Barrel : MonoBehaviour, IBarrel
     public TextMeshProUGUI text;
     public MeshRenderer rewardMeshRender;
     public RewardMaterials[] rewardMaterials;
+    [SerializeField] Money money;
     [SerializeField] bool killer;
 
     public bool Killer { get => killer; set { killer = value; } }
@@ -82,7 +83,7 @@ public class Barrel : MonoBehaviour, IBarrel
                 default:
                     break;
             }
-            Equations.UpBarrels();
+            ProgressLevel.control.UpBarrels();
             Die();
         }
     }
@@ -105,6 +106,7 @@ public class Barrel : MonoBehaviour, IBarrel
     public void Die()
     {
         gameObject.SetActive(false);
+        money.GiveMoney();
         BarrelGeneratorManager.instace.UnSubcribe(this);
     }
 

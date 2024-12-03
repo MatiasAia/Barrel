@@ -4,12 +4,12 @@ using UnityEngine;
 
 public static class Equations 
 {
-    public static int quantityBarrels;
+    //public static int quantityBarrels;
     public static int weaponDamage;
     public static int characterSpeed;
     public static int rateOfFire;
 
-    public static double BarrelsLife()
+    public static double BarrelsLife(int quantityBarrels)
     {
         double b = 2.7f;
         double e = 0.05f;
@@ -18,16 +18,16 @@ public static class Equations
         return System.Math.Pow(b, e * Mathf.Max(Random.Range(quantityBarrels - 5, quantityBarrels + 5), 1)) * c;
     }
 
-    public static double WeaponDamage()
+    public static double WeaponDamage(float weaponDamage)
     {
         double b = 2.7f;
         double e = 0.015f;
-        double c = 1 + (weaponDamage / 20) * 0.5f;
+        double c = 1 + (Equations.weaponDamage / 20) * 0.5f;
 
-        return System.Math.Pow(b, e * weaponDamage) * c;
+        return System.Math.Pow(b, e * Equations.weaponDamage) * c;
     }
 
-    public static float TimeRegenerateBarrels()
+    public static float TimeRegenerateBarrels(int quantityBarrels)
     {
         float b = 2f;
         float e = -0.01f;
@@ -42,7 +42,8 @@ public static class Equations
         float e = -0.01f;
         float c = 6; // 6
 
-        return Mathf.Pow(b, e * quantityBarrels) * c + 6;
+        //return Mathf.Pow(b, e * quantityBarrels) * c + 6;
+        return 12;
     }
 
     public static float CharacterSpeed()
@@ -61,18 +62,6 @@ public static class Equations
         float c = 0.21f;
 
         return Mathf.Pow(b, e * rateOfFire) * c + 0.09f;
-    }
-
-    public static void UpBarrels()
-    {
-        //Debug.Log("Barrels" + quantityBarrels);
-        //Debug.Log("Weapon Damage " + WeaponDamage());
-        //Debug.Log("Time regenerate Barrels " + TimeRegenerateBarrels());
-        //Debug.Log("SpeedBarrels " + SpeedBarrels());
-        //Debug.Log("CharacterSpeed " + CharacterSpeed());
-        //Debug.Log("RateOfFire " + RateOfFire());
-
-        quantityBarrels++;
     }
 
     public static void UpWeaponDamage()

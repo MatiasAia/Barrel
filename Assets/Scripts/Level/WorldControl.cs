@@ -27,6 +27,7 @@ public class WorldControl : MonoBehaviour
         cameraManager.ChangePos(CameraManager.Positions.Pos1);
         characterManager.DesactivateUI();
         characterManager.RestartComponents();
+        ProgressLevel.control.Restart();
     }
 
     [ContextMenu("StartGame")]
@@ -35,6 +36,7 @@ public class WorldControl : MonoBehaviour
         cameraManager.ChangePos(CameraManager.Positions.Pos2);
         characterManager.StartComponents();
         barrelGenerator.StartGenerator();
+        ProgressLevel.control.SetLevel();
     }
 
     public void EndGame()

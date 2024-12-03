@@ -12,12 +12,19 @@ public class Weapon : CharacterComponent
 
     public float rateOfFire;
 
+    public float currentDamage;
+
     Coroutine shooting;
+
+    public void Set(float initDamage)
+    {
+        currentDamage = initDamage;
+    }
 
     public void Shot()
     {
         Bullets bullet = bullets.GetPooledObject().GetComponent<Bullets>();
-        bullet.SetBullet(currentBulletSpeed);
+        bullet.SetBullet(currentBulletSpeed, currentDamage);
         bullet.transform.position = startBullet.position;
         bullet.Shoot();
     }

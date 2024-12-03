@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 4907672538990417231}
   - component: {fileID: 5436754613080479395}
   - component: {fileID: 7627749563734529252}
+  - component: {fileID: 2221469413591944114}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -242,6 +243,7 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 4f0a325a3911903478e5539fba1fc968, type: 2}
   - name: RateOfFire
     material: {fileID: 2100000, guid: e8925c96864d36944a470895d18faae4, type: 2}
+  money: {fileID: 2221469413591944114}
   killer: 0
   reward: 0
 --- !u!136 &5436754613080479395
@@ -278,6 +280,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2221469413591944114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683602813682370690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cfa2f81153aa449a4dd9d4169a4448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 10
 --- !u!1 &8509263273782863670
 GameObject:
   m_ObjectHideFlags: 0
