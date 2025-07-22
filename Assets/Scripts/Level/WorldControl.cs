@@ -17,14 +17,8 @@ public class WorldControl : MonoBehaviour
             control = this;
     }
 
-    public void Start()
-    {
-        cameraManager.ChangePos(CameraManager.Positions.Pos1);
-    }
-
     public void RestartGame()
     {
-        cameraManager.ChangePos(CameraManager.Positions.Pos1);
         characterManager.DesactivateUI();
         characterManager.RestartComponents();
         ProgressLevel.control.Restart();
@@ -33,7 +27,6 @@ public class WorldControl : MonoBehaviour
     [ContextMenu("StartGame")]
     public void StartGame()
     {
-        cameraManager.ChangePos(CameraManager.Positions.Pos2);
         characterManager.StartComponents();
         barrelGenerator.StartGenerator();
         ProgressLevel.control.SetLevel();
@@ -41,14 +34,21 @@ public class WorldControl : MonoBehaviour
 
     public void EndGame()
     {
-        cameraManager.ChangePos(CameraManager.Positions.Pos3);
+        cameraManager.ChangePos(CameraManager.Positions.PlayerDead);
         barrelGenerator.StopGenerator();
     }
 
     public void EndGameByDestroyWall()
     {
-        cameraManager.ChangePos(CameraManager.Positions.Pos4);
+        cameraManager.ChangePos(CameraManager.Positions.CityDestroyed);
         barrelGenerator.StopGenerator();
         characterManager.DiebyWall();
     }
+
+    public void ChangeCameraPos(CameraManager.Positions pos)
+    {
+        cameraManager.ChangePos(pos);
+    }
+
+
 }

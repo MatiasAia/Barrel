@@ -10,7 +10,7 @@ public class Weapon : CharacterComponent
 
     public float currentBulletSpeed;
 
-    public float rateOfFire;
+    public float rateOfFire; //TODO: implementar esta variable en las ecuaciones
 
     public float currentDamage;
 
@@ -55,6 +55,6 @@ public class Weapon : CharacterComponent
 
     public override void DieByWall()
     {
-        StopCoroutine(shooting);
+        Die();
     }
 }

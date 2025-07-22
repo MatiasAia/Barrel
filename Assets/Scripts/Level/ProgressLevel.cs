@@ -57,6 +57,5 @@ public class ProgressLevel : MonoBehaviour
     public void RecoletMoney(int quantity)
     {
         currentMoney += quantity;
-        Debug.Log("Money:" + currentMoney);
     }
 }

@@ -7,15 +7,18 @@ public class CameraManager : MonoBehaviour
 {
     public Transform cameraGO;
     public Transform[] cameraPivots;
-    public LabeledFloat[] times;
+    public LabeledFloat[] times;//TODO: cameraPivots debe estar dentro de times
     public Transform character;
 
     public enum Positions
     {
-        Pos1,
-        Pos2,
-        Pos3,
-        Pos4
+        InitPos,
+        PlayerPos,
+        PlayerDead,
+        CityDestroyed,
+        Shop, 
+        City,
+        Cannon
     }
 
     public void ChangePos(Positions position)
@@ -26,12 +29,12 @@ public class CameraManager : MonoBehaviour
     IEnumerator ChangingPos(Positions position)
     {
         Vector3 aux = cameraGO.position;
-        Vector3 auxAngle = cameraGO.eulerAngles;
+        Quaternion auxAngle = cameraGO.rotation;
         float time = 0;
         while (time < times[(int)position].TimeToPosition)
         {
             cameraGO.position = Vector3.Lerp(aux, cameraPivots[(int)position].position, times[(int)position].curve.Evaluate(time / times[(int)position].TimeToPosition));
-            cameraGO.eulerAngles = Vector3.Lerp(auxAngle, cameraPivots[(int)position].eulerAngles, times[(int)position].curve.Evaluate(time / times[(int)position].TimeToPosition));
+            cameraGO.rotation = Quaternion.Lerp(auxAngle, cameraPivots[(int)position].rotation, times[(int)position].curve.Evaluate(time / times[(int)position].TimeToPosition));
 
             time += TimeManager.control.GetTime();
             yield return null;
@@ -42,13 +45,14 @@ public class CameraManager : MonoBehaviour
 
         switch (position)
         {
-            case Positions.Pos1:
-                break;
-            case Positions.Pos2:
+            case Positions.PlayerPos:
                 cameraGO.parent = character;
                 break;
-            case Positions.Pos3:
-            case Positions.Pos4:
+            case Positions.InitPos:
+            case Positions.Shop:
+            case Positions.PlayerDead:
+            case Positions.Cannon:
+            case Positions.CityDestroyed:
                 cameraGO.parent = null;
                 break;
             default:
