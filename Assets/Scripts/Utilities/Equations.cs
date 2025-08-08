@@ -51,7 +51,8 @@ public static class Equations
 
         double result = System.Math.Pow(b, e * Equations.weaponDamage) * c;
 
-        return (long)result;
+        //return (long)result;
+        return weaponDamage;
     }
 
     public static float TimeRegenerateBarrels(long quantityBarrels)

@@ -45,6 +45,8 @@ public class WorldControl : MonoBehaviour
         cameraManager.ChangePos(CameraManager.Positions.CityDestroyed);
         barrelGenerator.StopGenerator();
         characterManager.DiebyWall();
+        ProgressLevel.control.SendMoney();
+        GameControl.instance.Save();
     }
 
     public void ChangeCameraPos(CameraManager.Positions pos)

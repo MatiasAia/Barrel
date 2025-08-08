@@ -23,6 +23,7 @@ public class BuyUpgradeOption : UIButton
             GameControl.instance.SetData(ProgressManager.Data.Money, -cost);
             GameControl.instance.SetData(ProgressManager.PlayerData.WeaponType.Pistol, 1);
             GameControl.instance.Save();
+            UpdateTextManager.instance.UpdateAllText();
         }
     }
 }

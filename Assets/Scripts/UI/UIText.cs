@@ -15,17 +15,30 @@ public class UIText : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    protected virtual void Start()
+    void Start()
+    {
+        UpdateText();
+    }
+
+    void OnEnable()
+    {
+        if(UpdateTextManager.instance)
+            UpdateTextManager.instance.setAllText += UpdateText;
+
+        UpdateText();
+    }
+
+    private void OnDisable()
+    {
+        if (UpdateTextManager.instance)
+            UpdateTextManager.instance.setAllText -= UpdateText;
+    }
+
+    protected virtual void SetText(long playerData) { }
+
+    protected virtual void UpdateText()
     {
         if (GameControl.instance)
             SetText(GameControl.instance.GetData(dataType));
     }
-
-    protected virtual void OnEnable()
-    {
-        if(GameControl.instance)
-            SetText(GameControl.instance.GetData(dataType));
-    }
-
-    protected virtual void SetText(long playerData) { }
 }

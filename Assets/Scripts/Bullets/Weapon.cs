@@ -16,7 +16,7 @@ public class Weapon : CharacterComponent
 
     Coroutine shooting;
 
-    private void Start()
+    public void SetDamage()
     {
         currentDamage = GameControl.instance.GetData(ProgressManager.PlayerData.WeaponType.Pistol);
     }
@@ -45,11 +45,12 @@ public class Weapon : CharacterComponent
 
     public override void Restart()
     {
-        
+
     }
 
     public override void Starting()
     {
+        SetDamage();
         shooting = StartCoroutine(RateOfFire());
     }
 
