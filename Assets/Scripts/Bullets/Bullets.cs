@@ -6,9 +6,9 @@ using System;
 public class Bullets : MonoBehaviour
 {
     float speed;
-    float damage;
+    long damage;
     public Rigidbody rb;
-    public void SetBullet(float speed, float damage)
+    public void SetBullet(float speed, long damage)
     {
         this.speed = speed;
         this.damage = damage;
@@ -38,7 +38,7 @@ public class Bullets : MonoBehaviour
         if (other.GetComponent<Barrel>())
         {
             gameObject.SetActive(false);
-            other.GetComponent<Barrel>().ReduceLife(Math.Round(Equations.WeaponDamage(damage)));
+            other.GetComponent<Barrel>().ReduceLife(Equations.WeaponDamage(damage));
         }
     }
 }

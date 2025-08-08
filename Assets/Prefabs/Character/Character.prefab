@@ -434,6 +434,7 @@ MonoBehaviour:
   startBullet: {fileID: 2139444462765421018}
   currentBulletSpeed: 20
   rateOfFire: 0.3
+  currentDamage: 0
 --- !u!1 &3117245428072591545
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +919,7 @@ GameObject:
   - component: {fileID: 6200238495742472352}
   - component: {fileID: 5442623073864917335}
   - component: {fileID: 1649860986881944026}
+  - component: {fileID: 622619231}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -970,6 +972,8 @@ MonoBehaviour:
   keyable: 1
   CloseMenu: {fileID: 3117245428072591545}
   NextMenu: {fileID: 0}
+  cameraChange: 1
+  pos: 0
 --- !u!114 &1649860986881944026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,3 +988,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   makeSound: 0
   keyable: 1
+--- !u!114 &622619231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178418330669056030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0808e2121193042a28fdb571111a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeSound: 0
+  keyable: 1
+  CloseMenu: {fileID: 3117245428072591545}
+  NextMenu: {fileID: 0}
+  cameraChange: 0
+  pos: 0

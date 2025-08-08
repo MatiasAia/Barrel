@@ -36,6 +36,8 @@ public class WorldControl : MonoBehaviour
     {
         cameraManager.ChangePos(CameraManager.Positions.PlayerDead);
         barrelGenerator.StopGenerator();
+        ProgressLevel.control.SendMoney();
+        GameControl.instance.Save();
     }
 
     public void EndGameByDestroyWall()

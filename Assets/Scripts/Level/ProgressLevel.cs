@@ -6,9 +6,9 @@ public class ProgressLevel : MonoBehaviour
 {
     public static ProgressLevel control;
 
-    int quantityBarrels = 1;
+    long levelBarrels;
     int wallHealt = 0;
-    int currentMoney = 0;
+    [SerializeField] int currentMoney = 0;
     City city;
     public City CityReference
     {
@@ -24,6 +24,7 @@ public class ProgressLevel : MonoBehaviour
 
     private void Start()
     {
+        levelBarrels = GameControl.instance.GetData(ProgressManager.Data.BarrelsLevel);
         SetLevel();
     }
 
@@ -38,24 +39,31 @@ public class ProgressLevel : MonoBehaviour
         return wallHealt;
     }
 
-    public int GetBarrels()
+    public long GetBarrels()
     {
-        return quantityBarrels;
+        return levelBarrels;
     }
 
     public void UpBarrels()
     {
-        quantityBarrels++;
+        levelBarrels++;
     }
 
     public void Restart()
     {
-        quantityBarrels = 1;
+        GameControl.instance.SetData(ProgressManager.Data.BarrelsLevel, levelBarrels);
         wallHealt = 100;
     }
+
+    public void SendMoney()
+    {
+        GameControl.instance.SetData(ProgressManager.Data.Money, currentMoney);
+    }
+
 
     public void RecoletMoney(int quantity)
     {
         currentMoney += quantity;
+        Debug.Log("Money:" + currentMoney);
     }
 }

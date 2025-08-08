@@ -7,7 +7,7 @@ public class Barrel : MonoBehaviour, IBarrel
 {
     Transform initialPosition;
     Transform target;
-    double life;
+    long life;
     public TextMeshProUGUI text;
     public MeshRenderer rewardMeshRender;
     public RewardMaterials[] rewardMaterials;
@@ -26,7 +26,7 @@ public class Barrel : MonoBehaviour, IBarrel
 
     public Update reward;
 
-    public void SetBarrel(Transform from, Transform to, double life)
+    public void SetBarrel(Transform from, Transform to, long life)
     {
         reward = (Update)Random.Range(0, 3);
         rewardMeshRender.material = rewardMaterials[(int)reward].material;
@@ -58,10 +58,10 @@ public class Barrel : MonoBehaviour, IBarrel
 
         transform.position = target.position;
 
-        Die();
+        Dissapear();
     }
 
-    public void ReduceLife(double damage)
+    public void ReduceLife(long damage)
     {
         life -= damage;
         text.SetText(life.ToString());
@@ -84,7 +84,8 @@ public class Barrel : MonoBehaviour, IBarrel
                     break;
             }
             ProgressLevel.control.UpBarrels();
-            Die();
+            Dissapear();
+            money.GiveMoney();
         }
     }
 
@@ -100,13 +101,12 @@ public class Barrel : MonoBehaviour, IBarrel
     {
         Debug.Log("me desaparezco");
         if (!killer)
-            Die();
+            Dissapear();
     }
 
-    public void Die()
+    public void Dissapear()
     {
         gameObject.SetActive(false);
-        money.GiveMoney();
         BarrelGeneratorManager.instace.UnSubcribe(this);
     }
 

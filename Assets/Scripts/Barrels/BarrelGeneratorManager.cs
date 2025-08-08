@@ -33,7 +33,7 @@ public class BarrelGeneratorManager : MonoBehaviour
             int barrelsPosition = UnityEngine.Random.Range(0, 3);
             Barrel barrel = barrelsPool.GetPooledObject().GetComponent<Barrel>();
             Subcribe(barrel);
-            barrel.SetBarrel(startBarrelsPivot[barrelsPosition],endBarrelsPivot[barrelsPosition], Math.Round(Equations.BarrelsLife(ProgressLevel.control.GetBarrels())));
+            barrel.SetBarrel(startBarrelsPivot[barrelsPosition],endBarrelsPivot[barrelsPosition], Equations.BarrelsLife(ProgressLevel.control.GetBarrels()));
             barrel.StartBarrel();
             yield return new WaitForSeconds(Equations.TimeRegenerateBarrels(ProgressLevel.control.GetBarrels()));
         }
@@ -41,13 +41,13 @@ public class BarrelGeneratorManager : MonoBehaviour
 
     public void Subcribe(IBarrel barrel)
     {
-        Debug.Log("Sub");
+        //Debug.Log("Sub");
         barrels.Add(barrel);
     }
 
     public void UnSubcribe(IBarrel barrel)
     {
-        Debug.Log("UnSub");
+        //Debug.Log("UnSub");
         barrels.Remove(barrel);
     }
 

@@ -12,13 +12,13 @@ public class Weapon : CharacterComponent
 
     public float rateOfFire; //TODO: implementar esta variable en las ecuaciones
 
-    public float currentDamage;
+    public long currentDamage;
 
     Coroutine shooting;
 
-    public void Set(float initDamage)
+    private void Start()
     {
-        currentDamage = initDamage;
+        currentDamage = GameControl.instance.GetData(ProgressManager.PlayerData.WeaponType.Pistol);
     }
 
     public void Shot()
