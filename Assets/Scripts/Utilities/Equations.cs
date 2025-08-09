@@ -92,6 +92,19 @@ public static class Equations
         return Mathf.Pow(b, e * rateOfFire) * c + 0.09f;
     }
 
+    public static long Cost(int basePrice, ProgressManager.PlayerData.WeaponType weaponType)
+    {
+        float baseP = basePrice;
+        float exponent = 0.2f;
+        float constant = 9;
+        float x = GameControl.instance.GetData(weaponType);
+
+
+        return (long)(Mathf.Pow(baseP, exponent * x) + constant);
+
+    }
+        
+
     public static void UpWeaponDamage()
     {
         //Debug.Log("Weapon Damage var value: " + weaponDamage);

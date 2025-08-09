@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class BuyUpgradeOption : UIButton
 {
-    public int cost = 100;
+    [SerializeField] int cost;
+    [SerializeField] int firstCost;
+    [SerializeField] ProgressManager.PlayerData.WeaponType weaponType = ProgressManager.PlayerData.WeaponType.Pistol;
+
+    private void Start()
+    {
+        cost = (int)Equations.Cost(firstCost, weaponType);
+        Debug.Log("Costo" + cost);
+    }
 
     public override void Exit()
     {
@@ -24,6 +32,7 @@ public class BuyUpgradeOption : UIButton
             GameControl.instance.SetData(ProgressManager.PlayerData.WeaponType.Pistol, 1);
             GameControl.instance.Save();
             UpdateTextManager.instance.UpdateAllText();
+            cost = (int)Equations.Cost(firstCost, weaponType);
         }
     }
 }

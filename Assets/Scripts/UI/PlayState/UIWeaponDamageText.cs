@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class UIWeaponDamageText : UIText
 {
-    public ProgressManager.PlayerData.WeaponType weaponType;
+    [SerializeField] ProgressManager.PlayerData.WeaponType weaponType;
+
+    [SerializeField] bool cost;
+
+    [SerializeField] int firstPrice;
 
     protected override void SetText(long playerData)
     {
@@ -13,8 +17,15 @@ public class UIWeaponDamageText : UIText
 
     protected override void UpdateText()
     {
-        if (GameControl.instance)
-            SetText(GameControl.instance.GetData(weaponType));
+        if(!cost)
+        {
+            if (GameControl.instance)
+                SetText(GameControl.instance.GetData(weaponType));
+        }
+        else
+        {
+            SetText(Equations.Cost(firstPrice, weaponType));
+        }
     }
 
 }

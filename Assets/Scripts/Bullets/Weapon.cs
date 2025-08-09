@@ -10,7 +10,7 @@ public class Weapon : CharacterComponent
 
     public float currentBulletSpeed;
 
-    public float rateOfFire; //TODO: implementar esta variable en las ecuaciones
+    public float rateOfFire; 
 
     public long currentDamage;
 
