@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIWeaponDamageText : UIText
+public class UIWeaponFeatureText : UIText
 {
     [SerializeField] ProgressManager.PlayerData.WeaponType weaponType;
+
+    [SerializeField] ProgressManager.PlayerData.WeaponFeature weaponFeature;
 
     [SerializeField] bool cost;
 
@@ -20,11 +22,11 @@ public class UIWeaponDamageText : UIText
         if(!cost)
         {
             if (GameControl.instance)
-                SetText(GameControl.instance.GetData(weaponType));
+                SetText(Equations.WeaponDamage(GameControl.instance.GetData(weaponType, weaponFeature)));
         }
         else
         {
-            SetText(Equations.Cost(firstPrice, weaponType));
+            SetText(Equations.Cost(firstPrice, weaponType, weaponFeature));
         }
     }
 

@@ -43,9 +43,17 @@ public class GameControl : MonoBehaviour
     }
 
 
-    public long GetData(ProgressManager.PlayerData.WeaponType weaponType)
+    public int GetData(ProgressManager.PlayerData.WeaponType weaponType, ProgressManager.PlayerData.WeaponFeature weaponFeature)
     {
-         return progressManager.playerData.weaponsInfo[weaponType];
+        switch (weaponFeature)
+        {
+            case ProgressManager.PlayerData.WeaponFeature.Damage:
+                return progressManager.playerData.weapons[(int)weaponType].damageLevel;
+            case ProgressManager.PlayerData.WeaponFeature.RateOfFire:
+                return progressManager.playerData.weapons[(int)weaponType].rateOfFireLevel;
+            default:
+                return 0;
+        }
     }
 
     public void SetData(ProgressManager.Data dataType, int quantity)
@@ -73,9 +81,17 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    public void SetData(ProgressManager.PlayerData.WeaponType weaponType, int quantity)
+    public void SetData(ProgressManager.PlayerData.WeaponType weaponType, ProgressManager.PlayerData.WeaponFeature weaponFeature, int quantity)
     {
-        progressManager.playerData.weaponsInfo[weaponType] += quantity;
+        switch (weaponFeature)
+        {
+            case ProgressManager.PlayerData.WeaponFeature.Damage:
+                progressManager.playerData.weapons[(int)weaponType].damageLevel += quantity;
+                break;
+            case ProgressManager.PlayerData.WeaponFeature.RateOfFire:
+                progressManager.playerData.weapons[(int)weaponType].damageLevel += quantity;
+                break;
+        }
     }
 
 

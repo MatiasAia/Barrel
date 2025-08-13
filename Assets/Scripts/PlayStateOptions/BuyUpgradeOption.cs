@@ -6,12 +6,13 @@ public class BuyUpgradeOption : UIButton
 {
     [SerializeField] int cost;
     [SerializeField] int firstCost;
-    [SerializeField] ProgressManager.PlayerData.WeaponType weaponType = ProgressManager.PlayerData.WeaponType.Pistol;
+    [SerializeField] ProgressManager.PlayerData.WeaponType weaponType;
+    [SerializeField] ProgressManager.PlayerData.WeaponFeature weaponFeature;
 
     private void Start()
     {
-        cost = (int)Equations.Cost(firstCost, weaponType);
-        Debug.Log("Costo" + cost);
+        cost = (int)Equations.Cost(firstCost, weaponType, weaponFeature);
+        Debug.Log("Costo" + cost + " firstCost " + firstCost);
     }
 
     public override void Exit()
@@ -29,10 +30,10 @@ public class BuyUpgradeOption : UIButton
         if(GameControl.instance.GetData(ProgressManager.Data.Money) > cost)
         {
             GameControl.instance.SetData(ProgressManager.Data.Money, -cost);
-            GameControl.instance.SetData(ProgressManager.PlayerData.WeaponType.Pistol, 1);
+            GameControl.instance.SetData(weaponType, weaponFeature, 1);
             GameControl.instance.Save();
             UpdateTextManager.instance.UpdateAllText();
-            cost = (int)Equations.Cost(firstCost, weaponType);
+            cost = (int)Equations.Cost(firstCost, weaponType, weaponFeature);
         }
     }
 }

@@ -8,30 +8,6 @@ public static class Equations
     public static int characterSpeed;
     public static int rateOfFire;
 
-    public static long GetRandomLong(long min, long max)
-    {
-        // Asegura que min sea menor que max
-        if (min > max)
-        {
-            long temp = min;
-            min = max;
-            max = temp;
-        }
-
-        // Usa Random para crear el número aleatorio
-        System.Random rand = new System.Random();
-
-        // La diferencia puede ser muy grande, así que usamos ulong para manejarla
-        ulong range = (ulong)(max - min);
-        byte[] buffer = new byte[8];
-        rand.NextBytes(buffer);
-        ulong randValue = BitConverter.ToUInt64(buffer, 0);
-
-        // Lo reducimos al rango deseado
-        long result = (long)(randValue % range) + min;
-        return result;
-    }
-
     public static long BarrelsLife(long quantityBarrels)
     {
         int random = UnityEngine.Random.value < 0.5f ? -1 : 1;
@@ -83,7 +59,7 @@ public static class Equations
         return Mathf.Pow(b, e * characterSpeed) * c + 0.3f;
     }
 
-    public static float RateOfFire()
+    public static float RateOfFire(int rateOfFire)
     {
         float b = 2f;
         float e = -0.015f;
@@ -92,16 +68,27 @@ public static class Equations
         return Mathf.Pow(b, e * rateOfFire) * c + 0.09f;
     }
 
-    public static long Cost(int basePrice, ProgressManager.PlayerData.WeaponType weaponType)
+    public static long Cost(int firstPrice, ProgressManager.PlayerData.WeaponType weaponType, ProgressManager.PlayerData.WeaponFeature weaponFeature)
     {
-        float baseP = basePrice;
-        float exponent = 0.2f;
-        float constant = 9;
-        float x = GameControl.instance.GetData(weaponType);
+        decimal baseP = firstPrice;
+        decimal constant = 1.5m;
+        int x = GameControl.instance.GetData(weaponType, weaponFeature);
 
+        decimal result = 1;
+        decimal currentPower = constant;
 
-        return (long)(Mathf.Pow(baseP, exponent * x) + constant);
+        int e = x - 1;
 
+        while (e > 0)
+        {
+            if ((e & 1) == 1)
+                result *= currentPower;
+
+            currentPower *= currentPower;
+            e >>= 1;
+        }
+
+        return (long)(baseP * result);
     }
         
 

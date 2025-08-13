@@ -10,15 +10,16 @@ public class Weapon : CharacterComponent
 
     public float currentBulletSpeed;
 
-    public float rateOfFire; 
+    public int rateOfFire; 
 
-    public long currentDamage;
+    public int currentDamage;
 
     Coroutine shooting;
 
-    public void SetDamage()
+    public void SetUp()
     {
-        currentDamage = GameControl.instance.GetData(ProgressManager.PlayerData.WeaponType.Pistol);
+        currentDamage = GameControl.instance.GetData(ProgressManager.PlayerData.WeaponType.Pistol, ProgressManager.PlayerData.WeaponFeature.Damage);
+        rateOfFire = GameControl.instance.GetData(ProgressManager.PlayerData.WeaponType.Pistol, ProgressManager.PlayerData.WeaponFeature.RateOfFire);
     }
 
     public void Shot()
@@ -34,7 +35,7 @@ public class Weapon : CharacterComponent
         while (true)
         {
             Shot();
-            yield return new WaitForSeconds(Equations.RateOfFire());
+            yield return new WaitForSeconds(Equations.RateOfFire(rateOfFire));
         }
     }
 
@@ -50,7 +51,7 @@ public class Weapon : CharacterComponent
 
     public override void Starting()
     {
-        SetDamage();
+        SetUp();
         shooting = StartCoroutine(RateOfFire());
     }
 

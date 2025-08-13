@@ -32,9 +32,7 @@ public class ProgressManager : MonoBehaviour
         data.cannonLevel = playerData.cannonLevel;
         data.gorilaLevel = playerData.gorilaLevel;
         data.barrelsLevel = playerData.barrelsLevel;
-        data.weaponsInfo[PlayerData.WeaponType.Pistol] = playerData.weaponsInfo[PlayerData.WeaponType.Pistol];
-        data.weaponsInfo[PlayerData.WeaponType.SubFusil] = playerData.weaponsInfo[PlayerData.WeaponType.SubFusil];
-
+        data.weapons = playerData.weapons;
 
         bf.Serialize(file, data);
         file.Close();
@@ -55,9 +53,7 @@ public class ProgressManager : MonoBehaviour
             playerData.cannonLevel = data.cannonLevel;
             playerData.gorilaLevel = data.gorilaLevel;
             playerData.barrelsLevel = data.barrelsLevel;
-            playerData.weaponsInfo[PlayerData.WeaponType.Pistol] = data.weaponsInfo[PlayerData.WeaponType.Pistol];
-            playerData.weaponsInfo[PlayerData.WeaponType.SubFusil] = data.weaponsInfo[PlayerData.WeaponType.SubFusil];
-
+            playerData.weapons = data.weapons;
         }
     }
 
@@ -70,6 +66,7 @@ public class ProgressManager : MonoBehaviour
         public int cannonLevel;
         public int gorilaLevel;
         public long barrelsLevel;
+        public WeaponData[] weapons;
 
         public enum WeaponType
         {
@@ -77,10 +74,18 @@ public class ProgressManager : MonoBehaviour
             SubFusil
         }
 
-        public Dictionary<WeaponType, int> weaponsInfo = new Dictionary<WeaponType, int>
+        public enum WeaponFeature
         {
-            {WeaponType.Pistol, 1},
-            {WeaponType.SubFusil, 1 }
-        };
+            Damage,
+            RateOfFire
+        }
+
+        [System.Serializable]
+        public class WeaponData
+        {
+            public WeaponType weaponType;
+            public int damageLevel;
+            public int rateOfFireLevel;
+        }
     }
 }

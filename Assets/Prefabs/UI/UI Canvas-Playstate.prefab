@@ -102,9 +102,9 @@ RectTransform:
   m_Father: {fileID: 1030319124}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 384.41, y: -168.76105}
   m_SizeDelta: {x: 768.82, y: 112.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &177892188
@@ -1410,6 +1410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155406659}
   - component: {fileID: 1155406661}
+  - component: {fileID: 327377123484304613}
   m_Layer: 5
   m_Name: 'Rate of Fire '
   m_TagString: Untagged
@@ -1436,9 +1437,9 @@ RectTransform:
   m_Father: {fileID: 1030319124}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 384.41, y: -281.4221}
   m_SizeDelta: {x: 768.82, y: 112.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1155406661
@@ -1449,6 +1450,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155406658}
   m_CullTransparentMesh: 1
+--- !u!114 &327377123484304613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155406658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a001349711c7d046bf49be4eae72f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeSound: 0
+  keyable: 1
+  cost: 0
+  firstCost: 5
+  weaponType: 0
+  weaponFeature: 1
 --- !u!1 &1178069206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,9 +2049,9 @@ RectTransform:
   m_Father: {fileID: 1030319124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 384.41, y: -56.1}
   m_SizeDelta: {x: 768.82, y: 112.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1685062507
@@ -2060,6 +2079,7 @@ MonoBehaviour:
   cost: 0
   firstCost: 10
   weaponType: 0
+  weaponFeature: 0
 --- !u!1 &1794347441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,9 +2115,9 @@ RectTransform:
   m_Father: {fileID: 1030319124}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 384.41, y: -394.08316}
   m_SizeDelta: {x: 768.82, y: 112.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1794347444
@@ -2911,6 +2931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataType: 0
   weaponType: 0
+  weaponFeature: 0
   cost: 1
   firstPrice: 10
 --- !u!1 &2727620251552577965
@@ -3433,6 +3454,7 @@ GameObject:
   - component: {fileID: 5323989020196742385}
   - component: {fileID: 5352780728237662238}
   - component: {fileID: 1605672210283241418}
+  - component: {fileID: 2809020057377265020}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -3559,6 +3581,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2809020057377265020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607937908702594253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec070e9354c4e894ba27ae6e182201ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataType: 0
+  weaponType: 0
+  weaponFeature: 1
+  cost: 0
+  firstPrice: 5
 --- !u!1 &4656623830095528184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4047,6 +4086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataType: 0
   weaponType: 0
+  weaponFeature: 0
   cost: 0
   firstPrice: 0
 --- !u!1 &5175757010572159748
@@ -4060,6 +4100,7 @@ GameObject:
   - component: {fileID: 2491302483371183946}
   - component: {fileID: 7328495865717569424}
   - component: {fileID: 6572891069963928745}
+  - component: {fileID: 2509968106465784335}
   m_Layer: 5
   m_Name: Cost
   m_TagString: Untagged
@@ -4184,6 +4225,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2509968106465784335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175757010572159748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec070e9354c4e894ba27ae6e182201ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataType: 0
+  weaponType: 0
+  weaponFeature: 1
+  cost: 1
+  firstPrice: 5
 --- !u!1 &6062663500165454310
 GameObject:
   m_ObjectHideFlags: 0
